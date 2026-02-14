@@ -14,6 +14,27 @@ public class MyBoardPage extends BasePage {
     }
     @FindBy(xpath = "//input[@data-testid='board-name-input']")
     WebElement boardName;
+    @FindBy(xpath = "//span[@data-testid='OverflowMenuHorizontalIcon']")
+    WebElement btnDots;
+    @FindBy(xpath = "//ul/li[last()]/button")
+    WebElement btnCloseBoard;
+    @FindBy(xpath = "//button[@data-testid='popover-close-board-confirm']")
+    WebElement btnCloseBoardConfirm;
+    @FindBy(xpath = "//button[@data-testid='close-board-delete-board-button']")
+    WebElement btnDeleteBoard;
+    @FindBy(xpath = "//button[@data-testid='close-board-delete-board-confirm-button']")
+    WebElement btnDeleteBoardConfirm;
+
+    public void deleteBoard(){
+        btnDots.click();
+        btnCloseBoard.click();
+        btnCloseBoardConfirm.click();
+        pause(5);
+        btnDots.click();
+        //clickWait(btnDots,5);
+        btnDeleteBoard.click();
+        btnDeleteBoardConfirm.click();
+    }
 
 
     public boolean validateBoardName(String text, int time ){
