@@ -1,0 +1,33 @@
+package tests;
+
+import dto.Board;
+import dto.User;
+import manager.AppManager;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.BoardsPage;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.MyBoardPage;
+
+public class BoardTests extends AppManager {
+
+    @BeforeMethod(alwaysRun = true)
+    public void login() {
+        User user = User.builder()
+                .email("fortestqaproject@gmail.com")
+                .password("Qapassword123!@#")
+                .build();
+        HomePage homePage = new HomePage(getDriver());
+        homePage.clickBtnLogin();
+        new LoginPage(getDriver()).login(user);
+
+    }
+
+    @Test
+    public void createNweBoardPositiveTest(){
+        Board board = Board.builder().boardTitle("12345").build();
+        new BoardsPage(getDriver()).createNewBoard(board);
+        new MyBoardPage(getDriver()).validateBoardName("12345",5);
+    }
+}
