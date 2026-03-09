@@ -1,0 +1,6 @@
+20:34:25.603 [Test worker] INFO  utils.TestNGListener - [TestClass name=class tests.LoginTest]start testing -->loginPositiveTest
+20:34:25.623 [Test worker] INFO  manager.AppManager - login test with user -->  fortestqaproject@gmail.com Qapassword123!@#
+20:34:25.651 [Test worker] INFO  utils.TestNGListener - [TestClass name=class tests.LoginTest]test failedloginPositiveTest
+20:34:25.653 [Test worker] ERROR utils.TestNGListener - Error
+20:34:25.730 [Test worker] INFO  utils.TestNGListener - [TestClass name=class tests.LoginTest]test failedloginPositiveTest
+20:34:25.730 [Test worker] ERROR utils.TestNGListener - Error
