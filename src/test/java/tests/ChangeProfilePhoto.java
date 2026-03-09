@@ -2,19 +2,25 @@ package tests;
 
 import dto.User;
 import manager.AppManager;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.AtlassianProfilePage;
 import pages.BoardsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+@Listeners(TestNGListener.class)
+
 public class ChangeProfilePhoto extends AppManager {
     BoardsPage boardsPage;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login() {
         User user = User.builder()
                 .email("fortestqaproject@gmail.com")
@@ -25,14 +31,31 @@ public class ChangeProfilePhoto extends AppManager {
         new LoginPage(getDriver()).login(user);
         boardsPage = new BoardsPage(getDriver());
     }
-    @Test
+    @Test(groups = "smoke")
     public void changeProfilePhoto(){
         boardsPage.openMyAccount();
         List<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
         System.out.println(tabs);
         getDriver().switchTo().window(tabs.get(1));
         AtlassianProfilePage atlassianProfilePage = new AtlassianProfilePage(getDriver());
-        atlassianProfilePage.changeMyProfilePhoto("src/main/resources/data_provider/avatar.png.png");
+        atlassianProfilePage.changeMyProfilePhoto
+                ("src/main/resources/data_provider/avatar.jpg.jpg");
+        Assert.assertTrue(atlassianProfilePage.validateMassage
+                ("We've uploaded your new avatar. It may take a few minutes to display everywhere."));
+
+    }
+    @Test
+    public void changeProfilePhotoNegativeWrongFormatFile(Method method){
+        boardsPage.openMyAccount();
+        List<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
+        System.out.println(tabs);
+        getDriver().switchTo().window(tabs.get(1));
+        AtlassianProfilePage atlassianProfilePage = new AtlassianProfilePage(getDriver());
+        atlassianProfilePage.changeMyProfilePhoto
+                ("src/main/resources/data_provider/Board1.csv");
+        logger.info("upload file csv" + method.getName());
+        Assert.assertTrue(atlassianProfilePage.validateWrongFormatFileMassage
+                ("Upload a photo or select from some default options"));
     }
 
 }

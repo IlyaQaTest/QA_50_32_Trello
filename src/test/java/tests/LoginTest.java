@@ -9,12 +9,12 @@ import pages.HomePage;
 import pages.LoginPage;
 
 public class LoginTest extends AppManager {
-    @Test
-    public void loginPositiveTest(){
+    @Test(groups = "smoke")
+    public void loginPositiveTest() {
         User user = User.builder()
                 .email("fortestqaproject@gmail.com")
-                .password("Qapassword123!@#")
-                .build();
+                .password("Qapassword123!@#").build();
+        logger.info("login test with user --> " + " " + user.getEmail() + " " + user.getPassword());
         HomePage homePage = new HomePage(getDriver());
         homePage.clickBtnLogin();
         new LoginPage(getDriver()).login(user);

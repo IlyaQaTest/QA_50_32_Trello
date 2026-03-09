@@ -23,9 +23,9 @@ public class DeleteBoardTests extends AppManager {
         new LoginPage(getDriver()).login(user);
         Board board = Board.builder().boardTitle("12345").build();
         new BoardsPage(getDriver()).createNewBoard(board);
-
     }
-    @Test
+
+    @Test(groups = "smoke")
     public void deleteBoardPositiveTest(){
         new MyBoardPage(getDriver())
                 .validateBoardName("12345", 5);

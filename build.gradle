@@ -18,15 +18,22 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.28'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
 
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+
     implementation 'net.datafaker:datafaker:2.5.2'
 
     implementation 'io.appium:java-client:8.3.0'
 
     testImplementation 'org.slf4j:slf4j-simple:2.0.9'
 
+
 }
 
 test {
     useTestNG()
-
+}
+task smoketests(type: Test){
+    useTestNG(){
+        suites 'src/test/resources/smoketests.xml'
+    }
 }

@@ -25,7 +25,7 @@ public class BoardTests extends AppManager {
 
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void createNweBoardPositiveTest(){
         Board board = Board.builder().boardTitle("12345").build();
         new BoardsPage(getDriver()).createNewBoard(board);
