@@ -1,4 +1,0 @@
-20:04:56.726 [Test worker] INFO  manager.AppManager - start testing with method --> changeProfilePhoto
-20:05:21.972 [Test worker] INFO  utils.TestNGListener - [TestClass name=class tests.ChangeProfilePhoto]start testing -->changeProfilePhoto
-20:05:48.945 [Test worker] INFO  utils.TestNGListener - [TestClass name=class tests.ChangeProfilePhoto]test failedchangeProfilePhoto
-20:05:48.973 [Test worker] ERROR utils.TestNGListener - Error

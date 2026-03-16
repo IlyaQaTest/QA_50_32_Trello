@@ -1,2 +1,0 @@
-14:35:03.702 [Test worker] INFO  manager.AppManager - start testing with method --> changeProfilePhotoNegativeWrongFormatFile
-14:35:27.832 [Test worker] INFO  manager.AppManager - upload file csvchangeProfilePhotoNegativeWrongFormatFile
